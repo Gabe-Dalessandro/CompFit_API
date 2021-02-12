@@ -1,14 +1,11 @@
 from django.http import JsonResponse
 from django.http import HttpResponse
 
-# imports for rest_framework
 from rest_framework.decorators import api_view
 from django.views.decorators.csrf import csrf_exempt
-
 from rest_framework.response import Response
-from .models import *
 from .serializers import *
-
+from user_profile.models import WorkoutPlaylist
 import json
 from datetime import date, datetime
 
@@ -84,12 +81,18 @@ def register_new_user(request):
     # age = today.year - birthDate.year - ((today.month, today.day) < (birthDate.month, birthDate.day))
     # print(age)
 
-    # Create a "Saved Workouts" Playlist
-
+    # Create a "Saved Workouts" Playlist every time a new user is created
+    create_saved_workouts_playlist(new_user)
 
     serializer = UserSerializer(instance=new_user)
     return Response(serializer.data)
 
+
+def create_saved_workouts_playlist(new_user):
+    playlist_name = "Saved Workouts"
+    date_created = datetime.now()
+
+    WorkoutPlaylist.objects.create(owner_id=new_user, playlist_name=playlist_name, date_created=date_created)
 
 
 
