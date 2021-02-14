@@ -58,7 +58,7 @@ class User(models.Model):
     phone_number = models.CharField(max_length=10, null=True)
     birthday = models.DateField(null=True)
     total_points = models.IntegerField(null=True)
-    # profile_picture = models.BinaryField(blank=True, null=True)
+    profile_picture = models.ImageField(null=True, blank=True, upload_to="images/")
     # user_description = models.TextField(blank=True, null=True)
 
     # Foreign Keys

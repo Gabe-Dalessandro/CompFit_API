@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '8@-w=)-g9rlgjhga7zmr(pe%^q2@&_5i-a!*4##s!#4r*^3ss)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -84,16 +85,34 @@ WSGI_APPLICATION = 'compfit_api.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'CompFitDB_Django',
+#         'USER': 'postgres',
+#         'PASSWORD': 'Ilove3ski1123',
+#         'HOST': 'localhost',
+#         'PORT': 5432
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'CompFitDB_Django',
-        'USER': 'gabe',
-        'PASSWORD': 'Ilove3ski1123',
-        'HOST': 'localhost',
+        'NAME': 'compfit',
+        'USER': 'postgres',
+        'PASSWORD': 'fitness123',
+        'HOST': 'database-1.c01ekuacvgyn.us-west-1.rds.amazonaws.com',
         'PORT': 5432
     }
 }
+
+# Credentials for AWS
+# DB instance id: database-1
+# username: postgres
+# password: fitness123
+# port: 5432
+# Initial database name: compfit
 
 
 # Password validation
@@ -133,3 +152,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_URL = "/media/" # added to accept pictures: creates the directory
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # added to accept pictures: tells us how to create the url path to the directory
+
+STATICFILES_DIR = (
+    os.path.join(BASE_DIR, 'static'),
+    )

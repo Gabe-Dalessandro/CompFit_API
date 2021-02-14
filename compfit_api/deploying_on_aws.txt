@@ -1,0 +1,40 @@
+
+==== STEPS WHEN DEPLOYING THIS SERVER CODE ON AWS ====
+
+1. Use the following command to check what needs to be done to your application still
+	- python manage.py check --deploy
+
+2. Set DEBUG MODE = false in setting.py
+
+3. Set ALLOWED_HOSTS in settings.py
+	- traffic should be allowed from what hosts?
+	- it should be the domain name from the was instance 
+	- for now we will put ["*"]
+
+4. Go to AWS EC2 instance page
+5. Right click on the instance and click connect
+6. In the terminal, navigate to where you have you .pem (the key-pair you downloaded when creating the instance) 
+	- use this command to set it to read only
+		- chmod 400 <name of key>.pem
+
+7. SSH into the server instance
+	-  ssh -i "test-keypair-django.pem" ec2-user@ec2-54-219-66-205.us-west-1.compute.amazonaws.com
+		- replace the name in quotes with the name of your key pair
+	- type "yes"
+
+8. In the terminal, must download a few packages to actually connect the server
+	- Python
+		- sudo yum install python37
+		- curl -O https://bootstrap.pypa.io/get-pip.py
+		- python3 get-pip.py --user
+		- pip3 install awsebcli --upgrade --user
+		
+	- create virtual env
+		- python3 -m venv env
+	- install other packages for Django
+		- pip3 install django
+		- pip3 install djangorestframework
+		- pip3 install markdown
+		- pip3 install django-filter
+
+	- Nginx, and _____ (sockets that allow Django to talk to Nginx)
