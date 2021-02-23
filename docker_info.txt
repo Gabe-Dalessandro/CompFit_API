@@ -1,0 +1,41 @@
+
+========= INTERACTING WITH DOCKER ======== 
+
+USEFUL FACTS:
+	- When you run a container, make edits while in it, and then stop it, 		- all the changes you made DO NOT persist
+
+
+
+
+BASIC COMMANDS:
+	- docker images: shows all the images that exist on your machine
+	- docker ps -a: lists all the containers that are created (running or stopped)
+	- docker rm <ID>: removes the container with that id
+	- docker rmi <ID>: removes the image with that id
+
+
+
+
+BUILDING THE DOCKER IMAGE:
+	- COMMAND: docker build -t compfit_server .
+		- builds the image from the dockerfile within the current directory (thats the .)
+		- -t gives it the name
+
+
+VOLUMES:
+	- allows changes within the container to persist 
+	- COMMAND: docker volume create todo-db
+		- this creates a volume
+		- then it must be mounted onto a directory within our machine
+
+
+CREATING A DOCKERFILE:
+
+
+RUNNING THE IMAGE -> which creates the container:
+	- when you run the image, it makes a container that you can access
+	- must map the ports to access the application
+	- FLAG: -p 3000:3000
+		- maps the host port to the containers port
+
+	- docker run <image-name>: builds the image and then allows you to access the container

@@ -58,13 +58,13 @@ class User(models.Model):
     phone_number = models.CharField(max_length=10, null=True)
     birthday = models.DateField(null=True)
     total_points = models.IntegerField(null=True)
-    profile_picture = models.ImageField(null=True, blank=True, upload_to="images/")
+    profile_picture = models.ImageField(null=True, blank=True, upload_to="profile_pictures")
     # user_description = models.TextField(blank=True, null=True)
 
     # Foreign Keys
-    gender = models.ForeignKey(Gender, on_delete=models.SET_NULL, to_field='gender_desc', null=True)
-    fitness_exp = models.ForeignKey(FitnessExperience, on_delete=models.SET_NULL, null=True, to_field='fitness_exp_title', db_column='fitness_exp_title')
-    workout_intensity = models.ForeignKey(WorkoutIntensity, on_delete=models.SET_NULL, null=True, to_field='workout_intensity_title', db_column='workout_intensity_title')
+    gender_desc = models.ForeignKey(Gender, on_delete=models.SET_NULL, to_field='gender_desc', null=True, db_column='gender_desc')
+    fitness_exp_title = models.ForeignKey(FitnessExperience, on_delete=models.SET_NULL, null=True, to_field='fitness_exp_title', db_column='fitness_exp_title')
+    workout_intensity_title = models.ForeignKey(WorkoutIntensity, on_delete=models.SET_NULL, null=True, to_field='workout_intensity_title', db_column='workout_intensity_title')
     workout_types = models.ManyToManyField(WorkoutType, through='UserWorkoutPreference')
     # level_number = models.ForeignKey('Levels', models.DO_NOTHING, db_column='level_number', null=True)
     class Meta:
@@ -89,3 +89,8 @@ class UserWorkoutPreference(models.Model):
         return return_str
 
 
+
+# To Delete all data in the database
+# DELETE FROM workout_playlist *;
+# DELETE FROM user_workout_preference *;
+# DELETE FROM public.user *;

@@ -25,6 +25,7 @@ def user_login(request):
 
     # Convert to a usable json object
     login_json = json.loads(request.body.decode("utf-8"))
+    print(login_json)
     email = login_json['email']
     password = login_json['password']
 
@@ -54,6 +55,7 @@ def register_new_user(request):
 
     # Convert to usable json object
     new_user_json = json.loads(request.body.decode("utf-8"))
+    print(new_user_json)
     email = new_user_json['email']
     password = new_user_json['password']
     workout_types = new_user_json['workout_types']
@@ -71,10 +73,10 @@ def register_new_user(request):
     new_user.phone_number = new_user_json['phone_number']
     new_user.birthday = new_user_json['birthday']
     new_user.total_points = new_user_json['total_points']
-    new_user.gender = Gender.objects.filter(gender_desc=new_user_json['gender'])[0]
-    new_user.fitness_exp = FitnessExperience.objects.filter(fitness_exp_title=new_user_json['fitness_exp'])[0]
-    new_user.workout_intensity = WorkoutIntensity.objects.filter(workout_intensity_title=new_user_json['workout_intensity'])[0]
-
+    new_user.gender_desc = Gender.objects.filter(gender_desc=new_user_json['gender_desc'])[0]
+    new_user.fitness_exp_title = FitnessExperience.objects.filter(fitness_exp_title=new_user_json['fitness_exp_title'])[0]
+    new_user.workout_intensity_title = WorkoutIntensity.objects.filter(workout_intensity_title=new_user_json['workout_intensity_title'])[0]
+    new_user.save()
     # Calculate the age
     # birthDate = datetime.strptime(newUser.birthday, '%Y-%m-%d')
     # today = date.today()
@@ -85,6 +87,7 @@ def register_new_user(request):
     create_saved_workouts_playlist(new_user)
 
     serializer = UserSerializer(instance=new_user)
+    print(serializer.data)
     return Response(serializer.data)
 
 
@@ -112,54 +115,3 @@ def get_workout_types(request):
     return Response(workout_type_array)
 
 
-
-
-
-
-
-
-
-# ==== Gender Functions ====
-
-
-def getGender(request):
-    print('\n\n === Gender GET Requested ===\n\tGetting Genders')
-    genders = Gender.objects.all()
-    print(genders)
-    return HttpResponse('Gender GET called')
-    # return JsonResponse('API BASE POINT', safe=False)
-
-
-@api_view(['GET'])
-def getGenderJson(request):
-    print('\n\n === Gender GET Requested ===\n\tGetting Genders')
-    genders = Gender.objects.all()
-    serializer = GenderSerializer(genders, many=True)
-
-    return Response(serializer.data)
-
-
-@api_view(['GET'])
-def getGenderJsonById(request, pk):
-    genders = Gender.objects.get(pk=pk)
-    print(genders)
-    serializer = GenderSerializer(genders, many=False)
-    print(serializer.data)
-
-    return Response(serializer.data)
-
-
-@api_view(['POST'])
-def genderCreate(request):
-    print("\n\n=== POSTING NEW GENDER ===")
-    serializer = GenderSerializer(data=request.data)
-
-    if serializer.is_valid():
-        print("success")
-        print(serializer)
-        serializer.save()
-    else:
-        print("== Errors ==")
-        print(serializer.errors)
-
-    return Response(serializer.data)
