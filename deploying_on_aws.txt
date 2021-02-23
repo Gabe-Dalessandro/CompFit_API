@@ -4,7 +4,7 @@
 1. Use the following command to check what needs to be done to your application still
 	- python manage.py check --deploy
 
-2. Set DEBUG MODE = false in setting.py
+2. Set DEBUG MODE=False in setting.py
 
 3. Set ALLOWED_HOSTS in settings.py
 	- traffic should be allowed from what hosts?
@@ -16,14 +16,20 @@
 6. In the terminal, navigate to where you have you .pem (the key-pair you downloaded when creating the instance) 
 	- use this command to set it to read only
 		- chmod 400 <name of key>.pem
+		- chmod 400 test-keypair-django.pem
 
 7. SSH into the server instance
-	-  ssh -i "test-keypair-django.pem" ec2-user@ec2-54-219-66-205.us-west-1.compute.amazonaws.com
-		- replace the name in quotes with the name of your key pair
+	- COMMAND: ssh -i "test-keypair-django.pem" ec2-user@ec2-54-215-184-192.us-west-1.compute.amazonaws.com
+	- get the current "Public IPv4 DNS address from the EC2 server
+	- add the user name "ec2-user@" to the front of the address
+	- replace the name in quotes with your key name
 	- type "yes"
 
 8. In the terminal, must download a few packages to actually connect the server
-	- Python
+	
+	- install docker 
+		- sudo amazon-linux-extras install docker
+	- install python3 for the server
 		- sudo yum install python37
 		- curl -O https://bootstrap.pypa.io/get-pip.py
 		- python3 get-pip.py --user
@@ -31,10 +37,93 @@
 		
 	- create virtual env
 		- python3 -m venv env
-	- install other packages for Django
+
+	- install python packages 
 		- pip3 install django
 		- pip3 install djangorestframework
 		- pip3 install markdown
 		- pip3 install django-filter
+		- pip3 install Pillow
+		- pip3 install psycopg2-binary
 
-	- Nginx, and _____ (sockets that allow Django to talk to Nginx)
+	- install git
+		- sudo yum install git -y
+
+	- install supervisor
+		- sudo amazon-linux-extras install epel
+		- sudo yum install supervisor
+
+	- Nginx, and gunicorn(sockets that allow Django to talk to Nginx)
+		- gunicorn
+			- pip3 install gunicorn
+		- Nginx
+	
+
+
+USING DOCKER TO BUILD AN IMAGE with all of these on it: see docker_info.txt
+
+
+9. Fix security settings within AWS EC2
+	- Find out which security group the instance is a part of (in my case it was launch wizard 2)
+	- On the left hand menu, click "Security Groups"
+	- change the inbound rules and add HTTP for the security group of your instance
+	- Add a new rule 
+		- HTTP
+		- Source = Anywhere
+	- Add another Rule
+		- Custom TCP
+		- Port: 8000
+		- Source: Anywhere
+
+
+
+=========== INSIDE THE EC2 INSTANCE ===========
+
+- Everything will be stored in the virtual env that we created the first time, so you must activate it to use the things installed
+	- source env/bin/activate
+
+
+
+10. RUNNING Django server from the EC2 instance
+	- go into the directory with the manage.py file
+	- gunicorn --bind 0.0.0.0:8000 <name_of_profect>.wsgi:application
+	- gunicorn --bind 0.0.0.0:8000 compfit_api.wsgi:application
+
+
+
+11. Ensure the server will always run your application
+	- If the server shuts down for some reason, this will tell it to start again when rebooted
+	- sudo yum install supervisor
+	- have supervisor read from a configuration file
+	- cd etc/supervisor/
+	- create a conf file for unicorn
+		- touch gunicorn.conf
+	- within the configuration file
+		- ctrl o saves
+		- ctrl x quits
+
+[program:gunicorn]
+# These 2 lines need to be fixed with correct directories
+directory=/home/ec2_user/CompFit_API/compfit_api/
+command=/home/ec2_user/CompFit_API/compfit_api/env/gunicorn --workers 1	--bind
+
+autostart=true
+autorestart=true
+stderr_logfile=/var/log/gunicorn/gunicorn.err.log
+stdout_logfile=/var/log/gunicorn/gunicorn.out.log
+
+[group:guni]
+programs:gunicorn
+
+	- make the directories for the log files
+		- sudo mkdir /var/log/gunicorn
+	- tell supervisor to read the conf file
+		- sude supervisorctl reread
+	- tell it to start the programs we created
+		- sudo supervisroctl update
+
+
+
+
+
+
