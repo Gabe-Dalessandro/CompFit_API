@@ -25,7 +25,6 @@ def user_login(request):
 
     # Convert to a usable json object
     login_json = json.loads(request.body.decode("utf-8"))
-    print(login_json)
     email = login_json['email']
     password = login_json['password']
 
@@ -39,9 +38,10 @@ def user_login(request):
             return Response(serializer.data)
         else:
             print("password is incorrect")
+            return Response("error")
     else:
         print("email does not exist")
-        return Response("user login")
+        return Response("error")
 
 
 

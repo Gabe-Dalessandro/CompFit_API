@@ -11,6 +11,7 @@ def api(request):
 
 urlpatterns = [
     path('', api),
-    path('profile_picture/update', views.update_profile_picture),
-    path('profile_picture/get', views.get_user_profile_picture)
+    path('profile_picture/update/', views.update_profile_picture),
+    path('profile_picture/get/', views.get_user_profile_picture),
+    path('workout_playlist/get/<str:id>/', views.get_users_workout_playlists)
 ]

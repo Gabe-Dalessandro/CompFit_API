@@ -59,7 +59,7 @@ class User(models.Model):
     birthday = models.DateField(null=True)
     total_points = models.IntegerField(null=True)
     profile_picture = models.ImageField(null=True, blank=True, upload_to="profile_pictures")
-    # user_description = models.TextField(blank=True, null=True)
+    user_description = models.TextField(blank=True, null=True)
 
     # Foreign Keys
     gender_desc = models.ForeignKey(Gender, on_delete=models.SET_NULL, to_field='gender_desc', null=True, db_column='gender_desc')
@@ -67,6 +67,7 @@ class User(models.Model):
     workout_intensity_title = models.ForeignKey(WorkoutIntensity, on_delete=models.SET_NULL, null=True, to_field='workout_intensity_title', db_column='workout_intensity_title')
     workout_types = models.ManyToManyField(WorkoutType, through='UserWorkoutPreference')
     # level_number = models.ForeignKey('Levels', models.DO_NOTHING, db_column='level_number', null=True)
+
     class Meta:
         db_table = 'user'
 

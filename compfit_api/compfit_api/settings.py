@@ -32,11 +32,11 @@ SECRET_KEY = '8@-w=)-g9rlgjhga7zmr(pe%^q2@&_5i-a!*4##s!#4r*^3ss)'
 # SECURITY WARNING: don't run with debug turned on in production!
 # For Production Mode
 # DEBUG = False
-# ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["*"]
 
 # For Testing
 DEBUG = True
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -51,7 +51,8 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'api',
-    'user_profile'
+    'user_profile',
+    'storages'
 ]
 
 REST_FRAMEWORK = {
@@ -95,28 +96,28 @@ TEMPLATES = [
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 # Using local host
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'CompFitDB_Django',
-        'USER': 'postgres',
-        'PASSWORD': 'Ilove3ski1123',
-        'HOST': 'localhost',
-        'PORT': 5432
-    }
-}
-
-# USing AWS EC2 server
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'compfit',
+#         'NAME': 'CompFitDB_Django',
 #         'USER': 'postgres',
-#         'PASSWORD': 'fitness123',
-#         'HOST': 'database-1.c01ekuacvgyn.us-west-1.rds.amazonaws.com',
+#         'PASSWORD': 'Ilove3ski1123',
+#         'HOST': 'localhost',
 #         'PORT': 5432
 #     }
 # }
+
+# Using AWS EC2 server
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'compfit',
+        'USER': 'postgres',
+        'PASSWORD': 'fitness123',
+        'HOST': 'database-1.c01ekuacvgyn.us-west-1.rds.amazonaws.com',
+        'PORT': 5432
+    }
+}
 
 # Credentials for AWS
 # DB instance id: database-1
@@ -174,3 +175,16 @@ STATICFILES_DIR = (
 
 # Added to accept large http requests since video and images will be sent
 DATA_UPLOAD_MAX_MEMORY_SIZE = None
+
+
+# S3 SETTINGS
+# Used for S3: Boto3 and django-storages. Values saved in "gabe/.bash_profile"
+AWS_ACCESS_KEY_ID = "AKIAQXKYQ7D3RJG6LFNP"
+AWS_SECRET_ACCESS_KEY = "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"
+AWS_STORAGE_BUCKET_NAME = "compfit-profile-pictures"
+# AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_FILE_OVERWRITE = False
+# AWS_DEFAULT_ACL = None
+AWS_DEFAULT_ACL = None
+
+DEFAULT_FILE_STORAGE = 'compfit_api.storages.MediaStore'
