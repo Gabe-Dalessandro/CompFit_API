@@ -1,28 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e170fd11-505d-4224-b20b-c275e8957750" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compfit_api/api/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/compfit_api/api/migrations/0002_user_profile_picture.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/compfit_api/api/migrations/0003_auto_20210213_0037.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/compfit_api/api/migrations/0004_auto_20210218_2126.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/compfit_api/api/migrations/0005_auto_20210218_2203.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/compfit_api/api/migrations/0006_auto_20210221_1758.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/compfit_api/api/migrations/0007_auto_20210221_1820.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/compfit_api/api/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/compfit_api/api/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compfit_api/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/compfit_api/api/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compfit_api/compfit_api/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/compfit_api/compfit_api/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compfit_api/media/profile_pictures/94_profile_picture.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/compfit_api/media/profile_pictures/94_profile_picture.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compfit_api/user_profile/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/compfit_api/user_profile/migrations/0002_auto_20210212_0154.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/compfit_api/user_profile/migrations/0003_auto_20210212_0246.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/compfit_api/user_profile/migrations/0004_auto_20210213_0032.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/compfit_api/user_profile/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/compfit_api/user_profile/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compfit_api/user_profile/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/compfit_api/user_profile/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compfit_api/user_profile/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/compfit_api/user_profile/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-    </list>
+    <list default="true" id="e170fd11-505d-4224-b20b-c275e8957750" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,11 +10,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/compfit_api/compfit_api/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="889">
-              <caret line="125" column="12" lean-forward="true" selection-start-line="125" selection-start-column="12" selection-end-line="125" selection-end-column="12" />
+            <state relative-caret-position="462">
+              <caret line="118" column="5" lean-forward="true" selection-start-line="118" selection-start-column="5" selection-end-line="118" selection-end-column="5" />
               <folding>
                 <element signature="e#415#439#0" expanded="true" />
               </folding>
@@ -43,11 +22,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/compfit_api/api/models.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/compfit_api/api/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-56">
-              <caret line="50" selection-start-line="50" selection-end-line="50" />
+            <state relative-caret-position="374">
+              <caret line="17" column="25" lean-forward="true" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="25" />
+              <folding>
+                <element signature="e#0#32#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -139,6 +121,12 @@
               <item name="compfit_api" type="462c0819:PsiDirectoryNode" />
               <item name="compfit_api" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="CompFit_rest_api" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CompFit_rest_api" type="462c0819:PsiDirectoryNode" />
+              <item name="compfit_api" type="462c0819:PsiDirectoryNode" />
+              <item name="user_profile" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -200,15 +188,6 @@
     <entry file="file://$PROJECT_DIR$/compfit_api/api/migrations/0013_auto_20210123_0805.py" />
     <entry file="file://$PROJECT_DIR$/compfit_api/api/migrations/0012_auto_20210123_0803.py" />
     <entry file="file://$PROJECT_DIR$/compfit_api/api/migrations/0008_auto_20210123_0756.py" />
-    <entry file="file://$PROJECT_DIR$/compfit_api/compfit_api/wsgi.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#227#236#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/compfit_api/api/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -326,21 +305,8 @@
     <entry file="file://$PROJECT_DIR$/compfit_api/compfit_api/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/compfit_api/compfit_api/asgi.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/compfit_api/test_image.jpg" />
     <entry file="file://$PROJECT_DIR$/compfit_api/94_profile_picture" />
-    <entry file="file://$PROJECT_DIR$/compfit_api/compfit_api/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="25" column="2" selection-start-line="25" selection-start-column="2" selection-end-line="25" selection-end-column="65" />
-          <folding>
-            <element signature="e#635#667#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Dockerfile">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="44">
@@ -357,16 +323,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/compfit_api/media/profile_pictures/94_profile_picture.jpg">
       <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/compfit_api/api/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="17" column="25" lean-forward="true" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/compfit_api/user_profile/urls.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -431,23 +387,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/compfit_api/compfit_api/storages.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/compfit_api/user_profile/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/compfit_api/user_profile/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -468,20 +407,73 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/compfit_api/compfit_api/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="889">
-          <caret line="125" column="12" lean-forward="true" selection-start-line="125" selection-start-column="12" selection-end-line="125" selection-end-column="12" />
-          <folding>
-            <element signature="e#415#439#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/compfit_api/api/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-56">
           <caret line="50" selection-start-line="50" selection-end-line="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compfit_api/user_profile/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="530">
+          <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compfit_api/compfit_api/wsgi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#227#236#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compfit_api/compfit_api/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="25" column="2" selection-start-line="25" selection-start-column="2" selection-end-line="25" selection-end-column="65" />
+          <folding>
+            <element signature="e#635#667#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compfit_api/compfit_api/storages.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compfit_api/compfit_api/asgi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compfit_api/api/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="17" column="25" lean-forward="true" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compfit_api/compfit_api/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="118" column="5" lean-forward="true" selection-start-line="118" selection-start-column="5" selection-end-line="118" selection-end-column="5" />
+          <folding>
+            <element signature="e#415#439#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
