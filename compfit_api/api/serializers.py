@@ -43,6 +43,11 @@ class UserSerializer(serializers.ModelSerializer):
     # We get the workout_types as a many to many field that returns the ids.
     # This converts them into strings and replaces the workout_types field with this new array of strings
     def convert_workout_types_to_str(self, user):
+        workout_type_query_set = UserWorkoutPreference.objects.filter(user=user.id)
+
+        # if len(workout_type_query_set) != 0:
+        #     print(workout_type_query_set[0].workout_type)
+
         workout_types = WorkoutType.objects.filter(user=user.id)
         workout_types_titles = []
 

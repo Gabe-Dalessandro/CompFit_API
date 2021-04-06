@@ -32,7 +32,7 @@ SECRET_KEY = '8@-w=)-g9rlgjhga7zmr(pe%^q2@&_5i-a!*4##s!#4r*^3ss)'
 # SECURITY WARNING: don't run with debug turned on in production!
 # For Production Mode
 # DEBUG = False
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ['*']
 
 # For Testing
 DEBUG = True
@@ -96,28 +96,28 @@ TEMPLATES = [
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 # Using local host
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'CompFitDB_Django',
-#         'USER': 'postgres',
-#         'PASSWORD': 'Ilove3ski1123',
-#         'HOST': 'localhost',
-#         'PORT': 5432
-#     }
-# }
-
-# Using AWS EC2 server
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'compfit',
+        'NAME': 'CompFitDB_Django',
         'USER': 'postgres',
-        'PASSWORD': 'fitness123',
-        'HOST': 'database-1.c01ekuacvgyn.us-west-1.rds.amazonaws.com',
+        'PASSWORD': 'Ilove3ski1123',
+        'HOST': 'localhost',
         'PORT': 5432
     }
 }
+
+# Using AWS EC2 server
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'compfit',
+#         'USER': 'postgres',
+#         'PASSWORD': 'fitness123',
+#         'HOST': 'database-1.c01ekuacvgyn.us-west-1.rds.amazonaws.com',
+#         'PORT': 5432
+#     }
+# }
 
 # Credentials for AWS
 # DB instance id: database-1

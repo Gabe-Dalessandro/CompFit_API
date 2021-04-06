@@ -17,9 +17,15 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.http import HttpResponse
+
+def api_test(request):
+    print('\n\n === API Requested ===\n')
+    return HttpResponse('api test')
 
 
 urlpatterns = [
+    path('api/', api_test),
     path('admin/', admin.site.urls),
     path('api/user/', include('api.urls')),
     path('api/user_profile/', include('user_profile.urls'))

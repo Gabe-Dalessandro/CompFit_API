@@ -36,12 +36,14 @@ def user_login(request):
             logged_in_user = User.objects.get(email=email)
             serializer = UserSerializer(instance=logged_in_user)
             return Response(serializer.data)
+        # Password is incorrect
         else:
             print("password is incorrect")
-            return Response("error")
+            return Response("Password was Incorrect")
+    # email does not exist
     else:
         print("email does not exist")
-        return Response("error")
+        return Response("Email does not exist")
 
 
 
@@ -91,11 +93,83 @@ def register_new_user(request):
     return Response(serializer.data)
 
 
+
+
+@api_view(['POST'])
+def register_new_user2(request):
+    print('\n\n=== api/user/register POST request ===\n\tRegistering a new user')
+
+    # Convert to usable json object
+    new_user_json = json.loads(request.body.decode("utf-8"))
+    # username = new_user_json["username"]
+    email = new_user_json["email"]
+    password = new_user_json["password"]
+
+    # Check if username already exists
+    # user_query_set = User.objects.filter(username=username)
+    # if len(user_query_set) == 1:
+    #     print("Error: Username already exists")
+    #     return Response("Username is already being used by another account.")
+
+    # Check if email already exists
+    user_query_set = User.objects.filter(email=email)
+    if len(user_query_set) == 1:
+        print("Error: Email already exists")
+        return Response("Email is already being used by another account.")
+
+    # Create the new user and return the new user data
+    new_user = User.objects.create(email=email, password=password)
+    user_serializer = UserSerializer(instance=new_user)
+
+    print("Successfully registered a new user!")
+    return Response(user_serializer.data)
+
+
+@api_view(['POST'])
+def onboard_user(request):
+    print('\n\n=== api/user/onboard POST request ===\n\tOnboarding the user')
+
+    # Convert to usable json object
+    user_json = json.loads(request.body.decode("utf-8"))
+
+    # Get the existing user
+    id = user_json["id"]
+    updated_user = User.objects.filter(id=id)[0]
+
+    # Update the user's data
+    updated_user.email = user_json['email']
+    updated_user.password = user_json['password']
+    updated_user.phone_number = user_json['phone_number']
+    updated_user.birthday = user_json['birthday']
+    updated_user.total_points = user_json['total_points']
+    updated_user.gender_desc = Gender.objects.filter(gender_desc=user_json['gender_desc'])[0]
+    updated_user.fitness_exp_title = FitnessExperience.objects.filter(fitness_exp_title=user_json['fitness_exp_title'])[0]
+    updated_user.workout_intensity_title = WorkoutIntensity.objects.filter(workout_intensity_title=user_json['workout_intensity_title'])[0]
+
+    # Add workout types into UserWorkoutPreference Table (many to many table)
+    workout_types = user_json['workout_types']
+    for wt in workout_types:
+        obj = WorkoutType.objects.filter(workout_type_title=wt)
+        workout_type_obj = obj[0]
+        UserWorkoutPreference.objects.create(user=updated_user, workout_type=workout_type_obj)
+
+    # Save the user
+    updated_user.save()
+
+    # Create a "Saved Workouts" Playlist every time a new user is created
+    create_saved_workouts_playlist(updated_user)
+    #
+    user_serializer = UserSerializer(instance=updated_user)
+    print(user_serializer.data)
+    return Response(user_serializer.data)
+
+
 def create_saved_workouts_playlist(new_user):
     playlist_name = "Saved Workouts"
     date_created = datetime.now()
 
-    WorkoutPlaylist.objects.create(owner_id=new_user, playlist_name=playlist_name, date_created=date_created)
+    WorkoutPlaylist.objects.create(owner=new_user, playlist_name=playlist_name, date_created=date_created)
+
 
 
 
@@ -115,3 +189,17 @@ def get_workout_types(request):
     return Response(workout_type_array)
 
 
+@api_view(['GET'])
+def search_users(request, search_param):
+    print('\n\n === api/user/search/get/ GET request ===\n\tSearching for users with parameter: ' + search_param)
+    user_query_set = User.objects.filter(email__icontains=search_param)
+
+    # for user in user_query_set:
+    #     print(user.email)
+
+    users_json = []
+    for user in user_query_set:
+        user_serializer = UserSerializer(instance=user)
+        users_json.append(user_serializer.data)
+
+    return Response(users_json)

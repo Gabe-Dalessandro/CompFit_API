@@ -9,7 +9,7 @@ class WorkoutPlaylist(models.Model):
     date_created = models.DateField()
 
     # Foreign Keys
-    owner = models.ForeignKey('api.User', on_delete=models.CASCADE, to_field='id', null=False, db_column='owner_id')
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, to_field='id', null=False, db_column='owner_id')
 
     class Meta:
         db_table = 'workout_playlist'

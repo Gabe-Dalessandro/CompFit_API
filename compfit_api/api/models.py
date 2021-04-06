@@ -60,6 +60,7 @@ class User(models.Model):
     total_points = models.IntegerField(null=True)
     profile_picture = models.ImageField(null=True, blank=True, upload_to="profile_pictures")
     user_description = models.TextField(blank=True, null=True)
+    # has_completed_onboarding = models.BooleanField(null=False, default=False)
 
     # Foreign Keys
     gender_desc = models.ForeignKey(Gender, on_delete=models.SET_NULL, to_field='gender_desc', null=True, db_column='gender_desc')
@@ -92,6 +93,6 @@ class UserWorkoutPreference(models.Model):
 
 
 # To Delete all data in the database
-# DELETE FROM workout_playlist *;
-# DELETE FROM user_workout_preference *;
-# DELETE FROM public.user *;
+# DELETE FROM workout_playlist where owner_id = 111;
+# DELETE FROM user_workout_preference where user_id = 111;
+# DELETE FROM public.user where id = 111;
